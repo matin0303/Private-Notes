@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="image">
+    <file>icons8-lock-64.png</file>
+    <file>zzz.png</file>
+    <file>icons8-email-60.png</file>
+    <file>icons8-person-94.png</file>
+    <file>icons8-key-100.png</file>
+    <file>bg.png</file>
+    <file>blur Frame.png</file>
+    <file>lock.png</file>
+    <file>icons8-website-96.png</file>
+    <file>icons8-telegram-48.png</file>
+    <file>icons8-facebook-48.png</file>
+    <file>icons8-instagram-48.png</file>
+    <file>icons8-close-64.png</file>
+  </qresource>
+</RCC>
