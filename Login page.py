@@ -177,8 +177,14 @@ class mypage(QtWidgets.QDialog):
         self.icon.addPixmap(QtGui.QPixmap(":/image/icons8-close-64.png"))
         self.close_btn.setIcon(self.icon)
         self.close_btn.setIconSize(QtCore.QSize(100,50))
+        self.shortcut()
 
+        self.close_btn.clicked.connect(QtWidgets.qApp.quit)
+        
+    def shortcut(self):
+        self.login_btn.setShortcut("Return")
 
+        
 if __name__ == "__main__":
     app=QtWidgets.QApplication(sys.argv)
     Form1=QtWidgets.QStackedWidget()
