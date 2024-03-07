@@ -13,9 +13,9 @@ class mypage(QtWidgets.QDialog):
                                  "padding-left:5px ; padding-top:5px;} \n"
                                  "QPushButton#create_btn:pressed{\n "
                                  "padding-left:5px ; padding-top:5px;} \n"
-                                 "QPushButton#insta_btn:pressed{\n"
+                                 "QPushButton#git_btn:pressed{\n"
                                  "padding-left:5px;padding-top:5px} \n"
-                                 "QPushButton#tel_btn:pressed{\n"
+                                 "QPushButton#linkedin_btn:pressed{\n"
                                  "padding-left:5px ; padding-top:5px} \n"
                                  "QPushButton#facebook_btn:pressed{\n"
                                  "padding-left:5px ; padding-top:5px} \n "
@@ -134,24 +134,24 @@ class mypage(QtWidgets.QDialog):
         self.create_btn.setText("Create")
 
 
-        self.tel_btn=QtWidgets.QPushButton(self.widget)
-        self.tel_btn.setObjectName("tel_btn")
-        self.tel_btn.setGeometry(QtCore.QRect(610,660,51,41))
+        self.linkedin_btn=QtWidgets.QPushButton(self.widget)
+        self.linkedin_btn.setObjectName("linkedin_btn")
+        self.linkedin_btn.setGeometry(QtCore.QRect(610,660,51,41))
         self.icon2=QtGui.QIcon()
-        self.icon2.addPixmap(QtGui.QPixmap(":/image/icons8-telegram-48.png"))
-        self.tel_btn.setIcon(self.icon2)
-        self.tel_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
-        self.tel_btn.setIconSize(QtCore.QSize(100,50))
+        self.icon2.addPixmap(QtGui.QPixmap(":/image/linkedin.png"))
+        self.linkedin_btn.setIcon(self.icon2)
+        self.linkedin_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
+        self.linkedin_btn.setIconSize(QtCore.QSize(100,48))
 
 
-        self.insta_btn=QtWidgets.QPushButton(self.widget)
-        self.insta_btn.setObjectName("insta_btn")
-        self.insta_btn.setGeometry(QtCore.QRect(694,660,41,41))
+        self.git_btn=QtWidgets.QPushButton(self.widget)
+        self.git_btn.setObjectName("git_btn")
+        self.git_btn.setGeometry(QtCore.QRect(694,660,41,41))
         self.icon3=QtGui.QIcon()
-        self.icon3.addPixmap(QtGui.QPixmap(":/image/icons8-instagram-48.png"))
-        self.insta_btn.setIcon(self.icon3)
-        self.insta_btn.setIconSize(QtCore.QSize(100,50))
-        self.insta_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
+        self.icon3.addPixmap(QtGui.QPixmap(":/image/github.png"))
+        self.git_btn.setIcon(self.icon3)
+        self.git_btn.setIconSize(QtCore.QSize(100,50))
+        self.git_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
 
         self.facebook_btn=QtWidgets.QPushButton(self.widget)
         self.facebook_btn.setObjectName("facebook_btn")
