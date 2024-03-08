@@ -184,7 +184,6 @@ class mypage(QtWidgets.QDialog):
 
         self.close_btn.clicked.connect(QtWidgets.qApp.quit)
 
-        
         self.linkedin_btn.clicked.connect(lambda:self.open_web("linkedin"))
         self.git_btn.clicked.connect(lambda:self.open_web("git"))
         self.facebook_btn.clicked.connect(lambda:self.open_web("facebook"))
@@ -196,8 +195,7 @@ class mypage(QtWidgets.QDialog):
         if  value == "git":
             webbrowser.open("https://github.com/matin0303")
         elif value == "linkedin":
-            pass
-            #webbrowser.open("")
+            webbrowser.open("www.linkedin.com/in/matin-pirmohammadi-0733182b9")
         elif value == "facebook":
             pass
             #webbrowser.open("")
