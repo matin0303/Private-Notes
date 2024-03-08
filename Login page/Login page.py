@@ -1,6 +1,7 @@
 from PyQt5 import QtGui ,QtCore , QtWidgets
 import sys
 import res2
+import webbrowser
 class mypage(QtWidgets.QDialog):
 
     def __init__(self):
@@ -182,9 +183,27 @@ class mypage(QtWidgets.QDialog):
         self.shortcut()
 
         self.close_btn.clicked.connect(QtWidgets.qApp.quit)
+
+        
+        self.linkedin_btn.clicked.connect(lambda:self.open_web("linkedin"))
+        self.git_btn.clicked.connect(lambda:self.open_web("git"))
+        self.facebook_btn.clicked.connect(lambda:self.open_web("facebook"))
+        self.web_btn.clicked.connect(lambda:self.open_web("web"))
         
     def shortcut(self):
         self.login_btn.setShortcut("Return")
+    def open_web(self,value):
+        if  value == "git":
+            webbrowser.open("https://github.com/matin0303")
+        elif value == "linkedin":
+            pass
+            #webbrowser.open("")
+        elif value == "facebook":
+            pass
+            #webbrowser.open("")
+        elif value == "web":
+            pass
+            #webbrowser.open("")
 
         
 if __name__ == "__main__":
