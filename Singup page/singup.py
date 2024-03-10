@@ -1,7 +1,7 @@
 from PyQt5 import QtGui ,QtCore , QtWidgets
 import sys
 import res2
-
+import webbrowser
 
 
 class singup(QtWidgets.QDialog):
@@ -15,9 +15,9 @@ class singup(QtWidgets.QDialog):
                                  "padding-left:5px ; padding-top:5px;} \n"
                                  "QPushButton#create_btn:pressed{\n "
                                  "padding-left:5px ; padding-top:5px;} \n"
-                                 "QPushButton#insta_btn:pressed{\n"
+                                 "QPushButton#git_btn:pressed{\n"
                                  "padding-left:5px;padding-top:5px} \n"
-                                 "QPushButton#tel_btn:pressed{\n"
+                                 "QPushButton#linkedin_btn:pressed{\n"
                                  "padding-left:5px ; padding-top:5px} \n"
                                  "QPushButton#facebook_btn:pressed{\n"
                                  "padding-left:5px ; padding-top:5px} \n "
@@ -149,24 +149,24 @@ class singup(QtWidgets.QDialog):
 
 
 
-        self.tel_btn=QtWidgets.QPushButton(self.widget)
-        self.tel_btn.setObjectName("tel_btn")
-        self.tel_btn.setGeometry(QtCore.QRect(610,700,51,41))
+        self.linkedin_btn=QtWidgets.QPushButton(self.widget)
+        self.linkedin_btn.setObjectName("linkedin_btn")
+        self.linkedin_btn.setGeometry(QtCore.QRect(610,700,51,41))
         self.icon2=QtGui.QIcon()
         self.icon2.addPixmap(QtGui.QPixmap(":/image/linkedin.png"))
-        self.tel_btn.setIcon(self.icon2)
-        self.tel_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
-        self.tel_btn.setIconSize(QtCore.QSize(100,50))
+        self.linkedin_btn.setIcon(self.icon2)
+        self.linkedin_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
+        self.linkedin_btn.setIconSize(QtCore.QSize(100,50))
 
 
-        self.insta_btn=QtWidgets.QPushButton(self.widget)
-        self.insta_btn.setObjectName("insta_btn")
-        self.insta_btn.setGeometry(QtCore.QRect(694,700,41,41))
+        self.git_btn=QtWidgets.QPushButton(self.widget)
+        self.git_btn.setObjectName("git_btn")
+        self.git_btn.setGeometry(QtCore.QRect(694,700,41,41))
         self.icon3=QtGui.QIcon()
         self.icon3.addPixmap(QtGui.QPixmap(":/image/github.png"))
-        self.insta_btn.setIcon(self.icon3)
-        self.insta_btn.setIconSize(QtCore.QSize(100,50))
-        self.insta_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
+        self.git_btn.setIcon(self.icon3)
+        self.git_btn.setIconSize(QtCore.QSize(100,50))
+        self.git_btn.setStyleSheet("background-color:rgba(0,0,0,0)")
 
         self.facebook_btn=QtWidgets.QPushButton(self.widget)
         self.facebook_btn.setObjectName("facebook_btn")
@@ -195,6 +195,22 @@ class singup(QtWidgets.QDialog):
         self.close_btn.setIcon(self.icon)
         self.close_btn.setIconSize(QtCore.QSize(100,50))
 
+        self.linkedin_btn.clicked.connect(lambda:self.open_web("linkedin"))
+        self.git_btn.clicked.connect(lambda:self.open_web("git"))
+        self.facebook_btn.clicked.connect(lambda:self.open_web("facebook"))
+        self.web_btn.clicked.connect(lambda:self.open_web("web"))
+
+    def open_web(self,value):
+        if  value == "git":
+            webbrowser.open("https://github.com/matin0303")
+        elif value == "linkedin":
+            webbrowser.open("www.linkedin.com/in/matin-pirmohammadi-0733182b9")
+        elif value == "facebook":
+            pass
+            #webbrowser.open("")
+        elif value == "web":
+            pass
+            #webbrowser.open("")
 
 if __name__ == "__main__":
     app=QtWidgets.QApplication(sys.argv)
