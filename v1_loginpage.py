@@ -428,7 +428,73 @@ class singup(QtWidgets.QDialog):
         ui=mypage()
         Form1.addWidget(ui)
         Form1.setCurrentIndex(Form1.currentIndex()+1)
+    def check_entry(self,user,pas,email):
+    #for user 
+        self.count_checking=0
+        def checking_user_pass(input):
+            self.count_checking+=1
+            num="1234567890"
+            a_z="abcdefghijklmnopqrstuvwxyz"
+            have_num=False
+            have_a_z=False
+            self.userpass_checked=False
+            for i in input:
+                if i in num :
+                    have_num = True
+                    if self.count_checking == 1:
+                        self.user_lable.setText("")
+                    else:
+                        self.pass_lable.setText("")
 
+
+            for j in input:
+                if j in a_z:
+                    have_a_z=True
+                    if self.count_checking == 1:
+                        self.user_lable.setText("")
+                    else:
+                        self.pass_lable.setText("")
+
+
+            if 8<=len(input)<=12 and have_num and have_a_z == True :
+                self.userpass_checked=True
+                if self.count_checking == 1:
+                    self.user_lable.setText("")
+                else:
+                    self.pass_lable.setText("")
+            else:
+                if self.count_checking == 1:
+                    if have_a_z == False:
+                        self.user_lable.setText("Username must contain letters ")
+                    elif have_num == False:
+                        self.user_lable.setText("Username must contain numbers")
+                    elif not 8<=len(input)<=12:
+                        self.user_lable.setText("Username must contain 8 to 12 characters")
+
+
+                else:
+                    if have_a_z == False:
+                        self.pass_lable.setText("Password must contain letters")
+                    elif have_num == False:
+                        self.pass_lable.setText("Password must contain numbers")
+                    elif not 8<len(input)<12:
+                        self.pass_lable.setText("Password must contain 8 to 12 characters")
+
+        def checking_email(input):
+            ok_email=["gmail.com","yahoo.com","email.com",]
+            try:
+                elem=input.split('@')
+                self.email_checked=False
+                if elem[1] in ok_email and len(elem[0])>6:
+                    self.email_checked=True
+                    self.email_lable.setText("")
+                else:
+                    self.email_lable.setText("The email is not valid")
+            except:
+                self.email_lable.setText("The email is not valid")
+        checking_user_pass(user)  
+        checking_user_pass(pas)
+        checking_email(email)
 
 if __name__ == "__main__":
     app=QtWidgets.QApplication(sys.argv)
