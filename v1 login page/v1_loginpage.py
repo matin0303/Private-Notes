@@ -2,6 +2,7 @@ from PyQt5 import QtGui ,QtCore , QtWidgets
 import webbrowser
 import mysql.connector as connection
 import sys
+from MySql import *
 import res2
 
 class mypage(QtWidgets.QDialog):
@@ -495,6 +496,34 @@ class singup(QtWidgets.QDialog):
         checking_user_pass(user)  
         checking_user_pass(pas)
         checking_email(email)
+
+        def check_exist(self,user,email):
+            def check_userExists(input):
+                cursor.execute(f'SELECT username FROM users WHERE username = "{input}"')
+                exists_user=cursor.fetchone()
+                self.user_notExists=False
+                if exists_user == None:
+                    self.user_notExists=True
+                else:
+                    self.user_lable.setStyleSheet("color:red")
+                    self.user_lable.setText("This username has already been used")
+
+            def check_emailExists(input):
+                cursor.execute(f'SELECT email FROM users WHERE email = "{input}"')
+                exists_user=cursor.fetchone()
+                self.email_notExist=False
+                if exists_user == None:
+                    self.email_notExist=True
+                else:
+                    self.email_lable.setStyleSheet("color:red")
+                    self.email_lable.setText("This email has already been used")
+            
+            check_userExists(user)
+            check_emailExists(email)
+
+            self.checkNotExists=False
+            if self.email_notExist and self.user_notExists ==True:
+                self.checkNotExists=True
 
 if __name__ == "__main__":
     app=QtWidgets.QApplication(sys.argv)
