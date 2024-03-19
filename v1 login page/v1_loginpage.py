@@ -524,6 +524,24 @@ class singup(QtWidgets.QDialog):
             self.checkNotExists=False
             if self.email_notExist and self.user_notExists ==True:
                 self.checkNotExists=True
+    def singup_set_data(self):
+        self.check_entry(self.user_ent.text(),self.pass_ent.text(),self.email_ent.text())
+        self.check_exist(self.user_ent.text(),self.email_ent.text())
+        if self.userpass_checked and self.email_checked and self.checkNotExists == True:
+            cursor.execute(f'''INSERT INTO users(id,username,password,email)VALUES(
+                        DEFAULT,
+                        "{self.user_ent.text()}",
+                        "{self.pass_ent.text()}",
+                        "{self.email_ent.text()}")''')
+            conn.commit()
+            self.email_lable.setStyleSheet("color:green")
+            self.email_lable.setText("Registration was successful")
+
+            #create db for user
+            cursor.execute(f'SELECT id FROM users WHERE username="{self.user_ent.text()}"')
+            user_id = cursor.fetchone()
+        else:
+            pass
 
 if __name__ == "__main__":
     app=QtWidgets.QApplication(sys.argv)
