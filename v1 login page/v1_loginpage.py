@@ -187,6 +187,7 @@ class mypage(QtWidgets.QDialog):
 
         self.close_btn.clicked.connect(QtWidgets.qApp.quit)
         self.create_btn.clicked.connect(self.page2)
+        self.login_btn.clicked.connect(self.login_check)
         self.linkedin_btn.clicked.connect(lambda:self.open_web("linkedin"))
         self.git_btn.clicked.connect(lambda:self.open_web("git"))
         self.facebook_btn.clicked.connect(lambda:self.open_web("facebook"))
@@ -212,6 +213,33 @@ class mypage(QtWidgets.QDialog):
 
     def shortcut(self):
         self.login_btn.setShortcut("Return")
+
+    def login_check(self):
+        cursor.execute(f'SELECT username FROM users WHERE username="{self.user_ent.text()}"')
+        username=cursor.fetchone()
+        if username == None:
+            self.notif_lable.setText("")
+            self.notif_lable.setText("Username or password is incorrect")
+        else :
+            self.notif_lable.setText("")
+            cursor.execute(f'SELECT password FROM users WHERE username="{self.user_ent.text()}"')
+            password=cursor.fetchone()
+            if password[0] == self.pass_ent.text():
+
+                #open main page
+                self.mainPage = QtWidgets.QStackedWidget()
+                self.ui2 = main_page()
+                self.mainPage.addWidget(self.ui2)
+                self.mainPage.show()
+
+                
+                
+                #close login page
+                Form1.close()
+                
+                print("login is succesfull")     
+            else:
+                self.notif_lable.setText("Username or password is incorrect")
         
 class singup(QtWidgets.QDialog):
     def __init__(self):
