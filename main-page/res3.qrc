@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="image">
+    <file>dark logo.png</file>
+    <file>logo.png</file>
+    <file>icons8-down-arrow-50.png</file>
+  </qresource>
+</RCC>
