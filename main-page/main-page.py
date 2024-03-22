@@ -226,7 +226,213 @@ class main_page(QtWidgets.QDialog):
         self.horizontalLayout_2.addWidget(self.image_wgt)
         self.verticalLayout.addWidget(self.body_wgt)
         self.horizontalLayout.addWidget(self.item_wgt)
+        self.logo_btn.clicked.connect(self.theme)
 
+        self.next_theme="light"
+    def theme(self):
+        if self.next_theme=="dark":
+            self.setStyleSheet("*{\n"
+                        "    font-family:Halant;\n"
+                        "    font-size:16px;\n"
+                        "    color:white;\n"
+                        "}\n"
+                        ".QWidget{\n"
+                        "    \n"
+                        "    background-color: rgba(66, 66, 66, 1);\n"
+                        "}")
+            self.createBTN_wgt.setStyleSheet("border-right:1px solid rgba(36, 33, 33, 1);\n"
+            "border-bottom:1px solid rgba(36, 33, 33, 1);")
+            
+            self.notes_wgt.setStyleSheet("border-right:1px solid rgba(36, 33, 33, 1);")
+
+            self.nav_wgt.setStyleSheet("border-bottom:1px solid rgba(36, 33, 33, 1);")
+
+            self.upload_wgt.setStyleSheet("border-left:1px solid rgba(36, 33, 33, 1);")
+
+            self.del_wgt.setStyleSheet("border-left:1px solid rgba(36, 33, 33, 1);")
+
+            self.save_wgt.setStyleSheet("border-left:0.5px solid rgba(36, 33, 33, 1);")
+
+            self.lineEdit_wgt.setStyleSheet("border-bottom:1px solid rgba(36, 33, 33, 1);")
+
+            self.image_wgt.setStyleSheet("border-left:1px solid rgba(36, 33, 33, 1);")
+
+            self.menu.setStyleSheet(".QMenu{\n"
+                                "background-color:rgba(66, 66, 66, 1)}\n"
+                                "::item::selected{ \n"
+                                "background-color:rgba(66, 66, 66, 1)}\n"
+                                "::item{ \n"
+                                "padding:10px;border-top:1px solid white;color:white}\n"
+                                "::drop-down{\n"
+                                "border:none}")
+            
+            #______________HOVER
+            self.create_btn.setStyleSheet(".QPushButton{\n"
+                                        "    background-color:transparent;\n"
+                                        "    border:none;\n"
+                                        "}\n"
+                                        "::pressed{\n"
+                                        "    padding-left:5px;\n"
+                                        "    padding-top:5px;\n"
+                                        "}\n"
+                                        "::hover{\n"
+                                        "    background-color: rgba(42, 41, 41, 1);\n"
+                                        "}\n"
+                                        "")
+            
+            self.upload_btn.setStyleSheet(".QPushButton{\n"
+                                        "    background-color:transparent;\n"
+                                        "    border:none;\n"
+                                        "}\n"
+                                        "::pressed{\n"
+                                        "    padding-left:5px;\n"
+                                        "    padding-top:5px;\n"
+                                        "}\n"
+                                        "::hover{\n"
+                                        "    background-color: rgba(42, 41, 41, 1);\n"
+                                        "}\n"
+                                        "")
+            self.del_btn.setStyleSheet(".QPushButton{\n"
+                                        "    background-color:transparent;\n"
+                                        "    border:none;\n"
+                                        "}\n"
+                                        "::pressed{\n"
+                                        "    padding-left:5px;\n"
+                                        "    padding-top:5px;\n"
+                                        "}\n"
+                                        "::hover{\n"
+                                        "    background-color: rgba(42, 41, 41, 1);\n"
+                                        "}\n"
+                                        "")
+            self.save_btn.setStyleSheet(".QPushButton{\n"
+                                        "    background-color:transparent;\n"
+                                        "    border:none;\n"
+                                        "}\n"
+                                        "::pressed{\n"
+                                        "    padding-left:5px;\n"
+                                        "    padding-top:5px;\n"
+                                        "}\n"
+                                        "::hover{\n"
+                                        "    background-color: rgba(42, 41, 41, 1);\n}")
+            self.note_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgba(42, 41, 41, 1)} \n"
+                            "::hover{background-color: rgba(42, 41, 41, 1)}")
+            self.image_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgba(42, 41, 41, 1);} \n"
+                                        "::hover{background-color: rgba(42, 41, 41, 1)}")
+
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("dark logo.png"))
+            self.logo_btn.setIcon(icon)
+
+            for i in self.senderBTN_list:
+                    i.setStyleSheet("background-color:transparent;\n"
+                        "border: 1px solid rgba(42, 41, 41, 1)")
+            try:
+                self.selected_btn_now.setStyleSheet("background-color:rgba(42, 41, 41, 1);border: 1px solid rgba(42, 41, 41, 1)")
+            except:
+                pass
+            self.next_theme="light"
+        else:
+            self.setStyleSheet("*{\n"
+                        "    font-family:Halant;\n"
+                        "    font-size:16px;\n"
+                        "    color:black;\n"
+                        "}\n"
+                        ".QWidget{\n"
+                        "    \n"
+                        "    background-color: #ffffff;\n"
+                        "}")
+            self.createBTN_wgt.setStyleSheet("border-right:1px solid rgb(217, 217, 217);\n"
+            "border-bottom:1px solid rgb(217, 217, 217);")
+            
+            self.notes_wgt.setStyleSheet("border-right:1px solid rgb(217, 217, 217);")
+
+            self.nav_wgt.setStyleSheet("border-bottom:1px solid rgb(217, 217, 217);")
+
+            self.upload_wgt.setStyleSheet("border-left:1px solid rgb(217, 217, 217);")
+
+            self.del_wgt.setStyleSheet("border-left:1px solid rgb(217, 217, 217);")
+
+            self.save_wgt.setStyleSheet("border-left:0.5px solid rgb(217, 217, 217);")
+
+            self.lineEdit_wgt.setStyleSheet("border-bottom:1px solid rgb(217, 217, 217);")
+
+            self.image_wgt.setStyleSheet("border-left:1px solid rgb(217, 217, 217);")
+            
+            self.menu.setStyleSheet(".QMenu{\n"
+                                "background-color:white}\n"
+                                "::item::selected{ \n"
+                                "background-color:rgb(217, 217, 217)}\n"
+                                "::item{ \n"
+                                "padding:10px;border-top:1px solid black}\n"
+                                "::drop-down{\n"
+                                "border:none}")
+            
+
+                        #______________HOVER
+            self.create_btn.setStyleSheet(".QPushButton{\n"
+                                        "    background-color:transparent;\n"
+                                        "    border:none;\n"
+                                        "}\n"
+                                        "::pressed{\n"
+                                        "    padding-left:5px;\n"
+                                        "    padding-top:5px;\n"
+                                        "}\n"
+                                        "::hover{\n"
+                                        "    background-color: rgb(230, 230, 230);\n"
+                                        "}\n"
+                                        "")
+            self.upload_btn.setStyleSheet(".QPushButton{\n"
+                                        "    background-color:transparent;\n"
+                                        "    border:none;\n"
+                                        "}\n"
+                                        "::pressed{\n"
+                                        "    padding-left:5px;\n"
+                                        "    padding-top:5px;\n"
+                                        "}\n"
+                                        "::hover{\n"
+                                        "    background-color: rgb(230, 230, 230);\n"
+                                        "}\n"
+                                        "")
+
+            self.del_btn.setStyleSheet(".QPushButton{\n"
+                                    "    background-color:transparent;\n"
+                                    "    border:none;\n"
+                                    "}\n"
+                                    "::pressed{\n"
+                                    "    padding-left:5px;\n"
+                                    "    padding-top:5px;\n"
+                                    "}\n"
+                                    "::hover{\n"
+                                    "    background-color: rgb(230, 230, 230);\n"
+                                    "}\n"
+                                    "")
+            self.save_btn.setStyleSheet(".QPushButton{\n"
+                                    "    background-color:transparent;\n"
+                                    "    border:none;\n"
+                                    "}\n"
+                                    "::pressed{\n"
+                                    "    padding-left:5px;\n"
+                                    "    padding-top:5px;\n"
+                                    "}\n"
+                                    "::hover{\n"
+                                    "    background-color: rgb(230, 230, 230);\n"
+                                    "}\n")
+            self.note_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgb(230, 230, 230)} \n"
+                            "::hover{background-color: rgb(230, 230, 230)}")
+            self.image_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgb(230, 230, 230);} \n"
+                                        "::hover{background-color: rgb(230, 230, 230)}")
+            
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap(":/image/logo.png"))
+            self.logo_btn.setIcon(icon)
+            for i in self.senderBTN_list:
+                i.setStyleSheet("background-color:transparent;\n"
+                    "border: 1px solid rgb(230, 230, 230)")
+            try:
+                self.selected_btn_now.setStyleSheet("background-color:rgb(217, 217, 217);border: 1px solid rgb(230, 230, 230)")
+            except:
+                pass
+            self.next_theme="dark"
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form=QtWidgets.QStackedWidget()
