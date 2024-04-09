@@ -229,6 +229,25 @@ class main_page(QtWidgets.QDialog):
         self.logo_btn.clicked.connect(self.theme)
 
         self.next_theme="light"
+
+    def create_note(self):
+        self.verticalLayout_4.removeItem(self.spacerItem)
+        self.note_btn=QtWidgets.QPushButton(f"Note {self.note_num}",self)
+        self.note_btn.setObjectName(f"{self.note_btn}")
+        self.note_btn.setFixedHeight(70)
+        if self.next_theme=="dark":
+            self.note_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgb(230, 230, 230)} \n"
+                                        "::hover{background-color: rgb(230, 230, 230)}")
+        else:
+            self.note_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgba(42, 41, 41, 1)} \n"
+                            "::hover{background-color: rgba(42, 41, 41, 1)}")
+        self.verticalLayout_4.addWidget(self.note_btn)
+        self.btns_height+=70
+        self.note_num+=1
+        self.noteBTN_list.append(self.note_btn.objectName())
+        self.senderBTN_list.append(self.note_btn)
+        self.note_btn.clicked.connect(self.click)
+        self.verticalLayout_4.addItem(self.spacerItem)
     def theme(self):
         if self.next_theme=="dark":
             self.setStyleSheet("*{\n"
