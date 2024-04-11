@@ -229,7 +229,13 @@ class main_page(QtWidgets.QDialog):
         self.logo_btn.clicked.connect(self.theme)
 
         self.next_theme="light"
-
+        self.note_btn=QtWidgets.QPushButton()
+        self.image_btn=QtWidgets.QPushButton()
+        #for create note def
+        self.note_num=1
+        self.noteBTN_list=[]#for btn codes
+        self.senderBTN_list=[]#for change style when clicked
+        self.btns_height=0
 
     def resizeEvent(self, event):
         self.scroll.setFixedHeight(self.height()-70)
@@ -262,6 +268,36 @@ class main_page(QtWidgets.QDialog):
         self.senderBTN_list.append(self.note_btn)
         self.note_btn.clicked.connect(self.click)
         self.verticalLayout_4.addItem(self.spacerItem)
+    
+    def click(self):
+        #for set buttons bg transparent:
+        for i in self.senderBTN_list:
+            if self.next_theme=="dark":
+                i.setStyleSheet("background-color:transparent;\n"
+                    "border: 1px solid rgb(230, 230, 230)")
+            else:
+                i.setStyleSheet("background-color:transparent;\n"
+                    "border: 1px solid rgba(42, 41, 41, 1)")
+        #btn code
+        self.item_code=self.notes_wgt.sender()
+        self.selected_btn_now=self.item_code
+        #for change selected btn bg
+        if self.next_theme=="dark":
+            self.item_code.setStyleSheet("background-color:rgb(217, 217, 217);border: 1px solid rgb(230, 230, 230)")
+        else:
+            self.item_code.setStyleSheet("background-color:rgba(42, 41, 41, 1);border: 1px solid rgba(42, 41, 41, 1)")
+        
+        #btn index+1 in list
+        self.note_number=int(self.senderBTN_list.index(self.item_code))+1
+        #for line edit 
+        self.textEdit1.setPlaceholderText(f"Note {self.note_number}")
+        self.textEdit1.setText("")
+        self.textEdit1.setDisabled(False)
+        self.textEdit2.setDisabled(False)
+        self.note_selected=True
+        self.textEdit2.setText("")
+        print(self.note_number)
+    
     def theme(self):
         if self.next_theme=="dark":
             self.setStyleSheet("*{\n"
