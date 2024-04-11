@@ -230,6 +230,20 @@ class main_page(QtWidgets.QDialog):
 
         self.next_theme="light"
 
+
+    def resizeEvent(self, event):
+        self.scroll.setFixedHeight(self.height()-70)
+
+    def add_scroll(self):
+        if self.btns_height>self.height() - 70:
+            self.scroll.setHidden(False)
+            self.scroll.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+            self.scroll.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+            self.scroll.setWidgetResizable(True)
+            self.scroll.setFixedHeight(self.height()-70)
+            self.scroll.setWidget(self.notes_wgt)
+        else:
+            self.scroll.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
     def create_note(self):
         self.verticalLayout_4.removeItem(self.spacerItem)
         self.note_btn=QtWidgets.QPushButton(f"Note {self.note_num}",self)
