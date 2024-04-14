@@ -297,7 +297,21 @@ class main_page(QtWidgets.QDialog):
         self.note_selected=True
         self.textEdit2.setText("")
         print(self.note_number)
-    
+    def delete_note(self):
+        try:
+            self.btn_selected=self.senderBTN_list[(self.note_number)-1] #(self.note_number)-1 is btn index in list
+            self.btn_selected.setHidden(True)
+            #self.noteBTN_list.pop((self.note_number)-1) #for delete btn code from list
+            self.textEdit1.setPlaceholderText(f"Note")
+            self.btns_height-=70
+            self.add_scroll()
+            self.note_selected=False
+            self.textEdit1.setText("")
+            self.textEdit2.setText("")
+            self.textEdit1.setDisabled(True)
+            self.textEdit2.setDisabled(True)
+        except:
+            print("select note")
     def theme(self):
         if self.next_theme=="dark":
             self.setStyleSheet("*{\n"
