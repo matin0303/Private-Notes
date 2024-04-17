@@ -516,6 +516,30 @@ class main_page(QtWidgets.QDialog):
             except:
                 pass
             self.next_theme="dark"
+
+    def upload_img(self):
+        self.image_num+=1
+        self.copy_img()
+        if self.image_num <= 10 and self.selected==True and self.note_selected==True :        
+            self.verticalLayout_5.removeItem(self.spacerItem3)
+            self.image_btn=QtWidgets.QPushButton(f'{self.image_name[-1]}',self.image_wgt)
+            self.image_btn.installEventFilter(self)
+            self.image_btn.setFixedHeight(70)
+            if self.next_theme=="dark":
+                self.image_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgb(230, 230, 230)} \n"
+                                            "::hover{background-color: rgb(230, 230, 230)}")
+            else:
+                self.image_btn.setStyleSheet(".QPushButton{background-color:transparent;border: 1px solid rgba(42, 41, 41, 1)} \n"
+                                "::hover{background-color: rgba(42, 41, 41, 1)}")
+    
+            self.image_local[self.image_btn]=self.hide_file_url_for_image #add btn code and image url in dict
+            self.image_btn.clicked.connect(self.open_img)
+            self.verticalLayout_5.addWidget(self.image_btn)
+            self.verticalLayout_5.addItem(self.spacerItem3)
+        else:
+            print("select a notes")
+    
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form=QtWidgets.QStackedWidget()
