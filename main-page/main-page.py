@@ -538,7 +538,18 @@ class main_page(QtWidgets.QDialog):
             self.verticalLayout_5.addItem(self.spacerItem3)
         else:
             print("select a notes")
-    
+    def copy_img(self):
+        self.dialog=QtWidgets.QFileDialog(self.image_wgt,"Upload Image",r"","*.png")
+        self.dialog.exec_()
+        self.urls=self.dialog.selectedUrls()
+        try:
+            self.image_url=self.urls[0].toLocalFile()
+            self.image_name=self.image_url.split('/')
+            self.hide_file_url_for_image=f'.images\\{self.image_name[-1]}.png'
+            shutil.copyfile(self.image_url ,self.hide_file_url_for_image )
+            self.selected=True 
+        except:
+            self.selected=False 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
