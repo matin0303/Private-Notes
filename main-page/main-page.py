@@ -551,6 +551,17 @@ class main_page(QtWidgets.QDialog):
         except:
             self.selected=False 
 
+    def open_img(self):
+        self.image_code=self.image_wgt.sender()
+        for i in self.image_local.keys():
+            if i == self.image_code :
+                image=Image.open(self.image_local[i])
+                image.show()
+                break
+            else:
+                pass
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Form=QtWidgets.QStackedWidget()
