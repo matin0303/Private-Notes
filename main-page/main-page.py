@@ -560,7 +560,17 @@ class main_page(QtWidgets.QDialog):
                 break
             else:
                 pass
-
+    def eventFilter(self,source,event):
+        def delete_image():
+            self.image_code.hide()
+        if event.type()==QtCore.QEvent.ContextMenu :
+            self.deleteMenu = QtWidgets.QMenu()
+            self.deleteMenu.addAction("Delete")
+            self.image_code=source# it's .sender() code
+            self.deleteMenu.triggered.connect(delete_image)
+            self.deleteMenu.exec_(event.globalPos())
+        return super().eventFilter(source,event)
+    
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
