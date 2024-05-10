@@ -571,6 +571,22 @@ class main_page(QtWidgets.QDialog):
             self.deleteMenu.exec_(event.globalPos())
         return super().eventFilter(source,event)
     
+    def upload_text(self):
+        if self.note_selected==True :
+            dialog2=QtWidgets.QFileDialog()
+            dialog2.setFileMode(QtWidgets.QFileDialog.AnyFile)
+            dialog2.setFilter(QtCore.QDir.Files)
+            if dialog2.exec_():
+                filename=dialog2.selectedFiles()
+                try:
+                    with open(filename[0],"r") as f:
+                        date=f.read()
+                        self.textEdit2.setText(date)
+                        f.close()
+                except:
+                    print("can't open file")
+        else:
+            print("select a note")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
